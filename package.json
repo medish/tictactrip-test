@@ -1,0 +1,26 @@
+{
+  "name": "tictactrip-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node $main",
+    "devStart" : "nodemon $main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medish/tictactrip-test.git"
+  },
+  "author": "medish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/medish/tictactrip-test/issues"
+  },
+  "homepage": "https://github.com/medish/tictactrip-test#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
