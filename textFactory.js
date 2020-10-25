@@ -78,7 +78,7 @@ function justifyLine(words, numOfSpaces, isLastLine){
  * @returns {Array} Return array of words 
  */
 function paragraphToWords(paragraph){
-    const regex = /\b(\w+[.,;!?]+)|(\w+)|([.,!?]+)|(\n)/g;
+    const regex = /\b(\w+[^ \n]*\w*)|([\wÀ-ÿ]+)|([^ ])|(\n)/g;
     return paragraph.match(regex);
 }
 
@@ -132,4 +132,9 @@ function textBuilder(jParagraphs){
             })
     });
     return justifiedText;
+}
+
+module.exports = {
+    textToJustifiedText,
+    textBuilder
 }
