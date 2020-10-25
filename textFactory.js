@@ -2,7 +2,7 @@
  * 
  * @param {Array} words Array of words
  * @param {Number} maxWidth Maximum width of line.
- * @returns {Array}
+ * @returns {Array} 
  */
 function justifyText(words, maxWidth) {
     if(words === null) return [['\n']];
@@ -34,6 +34,11 @@ function justifyText(words, maxWidth) {
     return lines;
 }
 
+/**
+ * @param {Array} words 
+ * @param {Number} numOfSpaces 
+ * @param {Boolean} isLastLine 
+ */
 function justifyLine(words, numOfSpaces, isLastLine){
     
     const N = words.length;
@@ -77,12 +82,24 @@ function paragraphToWords(paragraph){
     return paragraph.match(regex);
 }
 
+/**
+ * 
+ * @param {String} text
+ * @summary split text into paragraphs
+ * @returns {Array} Array of string
+ */
 function textToParagraphs(text){
     const regex = /\n/g;
-
     return text.split(regex);
 }
 
+/**
+ * 
+ * @param {String} text
+ * @summary  
+ * @param {Number} maxWidth
+ * @returns  {Array}
+ */
 function textToJustifiedText(text, maxWidth) {
     const paragraphs = textToParagraphs(text);
     let jParagraphs = [];
@@ -97,6 +114,11 @@ function textToJustifiedText(text, maxWidth) {
     return jParagraphs;
 }
 
+/**
+ * 
+ * @param {Array} jParagraphs
+ * @returns {String} Justified text 
+ */
 function textBuilder(jParagraphs){
     let justifiedText = '';
     jParagraphs.forEach(lines => {
