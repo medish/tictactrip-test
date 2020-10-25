@@ -5,6 +5,7 @@
  * @returns {Array}
  */
 function justifyText(words, maxWidth) {
+    if(words === null) return [['\n']];
     let lines = [];
     let currentWord = 0;
     const N = words.length;
@@ -41,10 +42,12 @@ function justifyLine(words, numOfSpaces, isLastLine){
         // left justify
         let leftSpaces = numOfSpaces;
         for(let i = 0; i < N -1; ++i){
+            if(words[i] == '\n') continue;
             words[i] += ' ';
             --leftSpaces; 
         }
         // extraSpace
+        if(words[N-1] == '\n') return;
         words[N-1] += ' '.repeat(leftSpaces);
     }else {
         // middlejustify
@@ -54,6 +57,7 @@ function justifyLine(words, numOfSpaces, isLastLine){
         let extraSpace = numOfSpaces % groupSpace;
 
         for(let i = 0; i < N -1; ++i){
+            if(words[i] == '\n') continue;
             words[i] += ' '.repeat(reqSpace);
             if(extraSpace > 0){
                 words[i] += ' ';
@@ -68,24 +72,42 @@ function justifyLine(words, numOfSpaces, isLastLine){
  * @summary split text into words and take in consideration the ponctuation.
  * @returns {Array} Return array of words 
  */
-function textToWords(text){
-    const regex = /\b(\w+[.,;!?]+)|(\w+)|([.,!?]+)/g;
-    return text.match(regex);
+function paragraphToWords(paragraph){
+    const regex = /\b(\w+[.,;!?]+)|(\w+)|([.,!?]+)|(\n)/g;
+    return paragraph.match(regex);
 }
 
-const text = `Et eu velit labore anim cupidatat velit consequat esse adipisicing. Nulla pariatur consequat pariatur qui aliqua adipisicing esse sunt commodo incididunt incididunt nisi sit ipsum. Consequat labore commodo velit aliquip ipsum dolore cupidatat. Qui ullamco est fugiat sint occaecat non incididunt. Consequat est labore ad do ea sit amet sunt aliqua veniam culpa eiusmod veniam.
-Cillum in reprehenderit cillum ex cillum elit minim ullamco. Enim exercitation velit nostrud Lorem esse qui ut excepteur tempor nisi. Aliquip eu aliqua velit in deserunt do nisi laborum dolore elit labore elit pariatur. Eiusmod incididunt qui magna sunt duis qui dolore amet sit aliquip voluptate. Sint et ut commodo magna ex eiusmod sint sint.
+function textToParagraphs(text){
+    const regex = /\n/g;
 
-Sint tempor duis ipsum nostrud pariatur enim quis labore qui. Dolore voluptate quis consectetur elit. Adipisicing minim ea eiusmod culpa. Velit eiusmod commodo ipsum nostrud et ex consectetur sint pariatur adipisicing. Nulla occaecat voluptate elit occaecat eiusmod ea aute est proident. Ut labore proident eiusmod ipsum ea cillum ex ea esse. Sint do exercitation nisi esse.`
-let words = textToWords(text);
-//console.log(words);
-let jWords = justifyText(words, 40);
-let jText = '';
-for (let i =0; i < jWords.length; ++i){
-    for(let j = 0; j < jWords[i].length; ++j){
-        jText += (jWords[i][j]);
-    }
-    jText += '\n';
+    return text.split(regex);
 }
 
-console.log(jText);
+function textToJustifiedText(text, maxWidth) {
+    const paragraphs = textToParagraphs(text);
+    let jParagraphs = [];
+
+    // justify each paragraph
+    paragraphs.forEach(paragraph => {
+        const words = paragraphToWords(paragraph);
+        const lines = justifyText(words, maxWidth);
+        jParagraphs.push(lines);
+    });
+
+    return jParagraphs;
+}
+
+function textBuilder(jParagraphs){
+    let justifiedText = '';
+    jParagraphs.forEach(lines => {
+            lines.forEach(line => {
+                line.forEach( word => {
+                    if(word !== '\n'){
+                        justifiedText += word;
+                    }
+                })
+                    justifiedText += '\n';
+            })
+    });
+    return justifiedText;
+}
