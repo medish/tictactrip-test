@@ -116,6 +116,12 @@ function textToJustifiedText(text, maxWidth) {
     return jParagraphs;
 }
 
+function textToWords(text){
+    const regex = /([\wÀ-ÿ]+-?[\wÀ-ÿ]*)/g;
+
+    return text.match(regex);
+}
+
 /**
  * 
  * @param {Array} jParagraphs
@@ -138,5 +144,6 @@ function textBuilder(jParagraphs){
 
 module.exports = {
     textToJustifiedText,
-    textBuilder
+    textBuilder,
+    textToWords
 }
