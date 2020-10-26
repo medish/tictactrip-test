@@ -1,8 +1,8 @@
 /**
- * 
+ * @summary 
  * @param {Array} words Array of words
- * @param {Number} maxWidth Maximum width of line.
- * @returns {Array} 
+ * @param {Number} maxWidth Maximum width of a line.
+ * @returns {Array} Justified lines
  */
 function justifyText(words, maxWidth) {
     if(words === null) return [['\n']];
@@ -18,8 +18,8 @@ function justifyText(words, maxWidth) {
         while(  nextWord < N 
             && (lineLength + words[nextWord].length + (nextWord - currentWord - ONE_SPACE)) < maxWidth)
         {
-                lineLength += words[nextWord].length;
-                ++nextWord;
+            lineLength += words[nextWord].length;
+            ++nextWord;
         }
         // 
         const numOfSpaces = maxWidth - lineLength;
@@ -74,7 +74,9 @@ function justifyLine(words, numOfSpaces, isLastLine){
 /**
  * 
  * @param {String} text
- * @summary split text into words and take in consideration the ponctuation.
+ * @summary split text into words.
+ * @description split text into words and consideration 
+ *              the ponctuation and paragraphs.
  * @returns {Array} Return array of words 
  */
 function paragraphToWords(paragraph){

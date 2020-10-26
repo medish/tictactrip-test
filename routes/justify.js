@@ -1,4 +1,3 @@
-const { request } = require('express');
 const express = require('express');
 const bodyParser = require('body-parser');
 const textFactory = require('../textFactory');
@@ -10,7 +9,7 @@ router.use(bodyParser.text({ type : 'text/plain'}));
 router.post('/api/justify',  (request, response) => {
     const text = request.body;
     
-    // empty request
+    // empty or invalid request
     if(Object.keys(text).length === 0) {
         return response.status(406).send('Format not supported');
     } 
