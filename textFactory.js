@@ -47,22 +47,17 @@ function justifyLine(words, numOfSpaces, isLastLine){
         // left justify
         let leftSpaces = numOfSpaces;
         for(let i = 0; i < N -1; ++i){
-            if(words[i] == '\n') continue;
             words[i] += ' ';
             --leftSpaces; 
         }
-        // extraSpace
-        if(words[N-1] == '\n') return;
         words[N-1] += ' '.repeat(leftSpaces);
     }else {
         // middlejustify
-
         const groupSpace = N - 1;
         const reqSpace = parseInt(numOfSpaces / groupSpace);
         let extraSpace = numOfSpaces % groupSpace;
 
         for(let i = 0; i < N -1; ++i){
-            if(words[i] == '\n') continue;
             words[i] += ' '.repeat(reqSpace);
             if(extraSpace > 0){
                 words[i] += ' ';
@@ -73,10 +68,8 @@ function justifyLine(words, numOfSpaces, isLastLine){
 }
 /**
  * 
- * @param {String} text
- * @summary split text into words.
- * @description split text into words and take in consideration 
- *              the ponctuation and paragraphs (break lines).
+ * @param {String} paragraph
+ * @summary split given 'paragraph' into words.
  * @returns {Array} Array of words 
  */
 function paragraphToWords(paragraph){
@@ -86,8 +79,9 @@ function paragraphToWords(paragraph){
 
 /**
  * 
+ * Split given 'text' into paragraphs and take in consideration 
+ * the ponctuation and paragraphs (and break lines).
  * @param {String} text
- * @summary split text into paragraphs
  * @returns {Array} Array of paragraphs.
  */
 function textToParagraphs(text){
@@ -122,7 +116,7 @@ function textToJustifiedText(text, maxWidth) {
  * @returns {Array} Array of words 
  */
 function textToWords(text){
-    const regex = /([\wÀ-ÿ]+-?[\wÀ-ÿ]*)/g;
+    const regex = /([\wÀ-ÿ]+)/g;
 
     return text.match(regex);
 }

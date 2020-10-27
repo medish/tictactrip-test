@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const ms = require('ms');
 const router = express.Router();
+
 const rateLimit = {};
 const WORDS_LIMIT = config.get('RATE_WORDS_LIMIT');
 const SECRET_KEY = config.get('SECRET_KEY');
@@ -60,14 +61,12 @@ function checkRate(request, response, next){
         return response.sendStatus(402);
     }
 
-
     if(expiredTime > ms(RATE_EXPIRY_TIME)){
         currToken.issuedAt = Date.now();
         currToken.words = 0;
     }
     currToken.words += lenWords;
     rateLimit[token] =  currToken;
-    console.log(currToken);
 
     next();
 }
