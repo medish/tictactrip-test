@@ -75,9 +75,9 @@ function justifyLine(words, numOfSpaces, isLastLine){
  * 
  * @param {String} text
  * @summary split text into words.
- * @description split text into words and consideration 
- *              the ponctuation and paragraphs.
- * @returns {Array} Return array of words 
+ * @description split text into words and take in consideration 
+ *              the ponctuation and paragraphs (break lines).
+ * @returns {Array} Array of words 
  */
 function paragraphToWords(paragraph){
     const regex = /\b(\w+[^ \n]*\w*)|([\wÀ-ÿ]+)|([^ ])|(\n)/g;
@@ -88,7 +88,7 @@ function paragraphToWords(paragraph){
  * 
  * @param {String} text
  * @summary split text into paragraphs
- * @returns {Array} Array of string
+ * @returns {Array} Array of paragraphs.
  */
 function textToParagraphs(text){
     const regex = /\n/g;
@@ -100,7 +100,7 @@ function textToParagraphs(text){
  * @param {String} text
  * @summary  
  * @param {Number} maxWidth
- * @returns  {Array}
+ * @returns  {Array} Array of justified paragraphs.
  */
 function textToJustifiedText(text, maxWidth) {
     const paragraphs = textToParagraphs(text);
@@ -116,6 +116,11 @@ function textToJustifiedText(text, maxWidth) {
     return jParagraphs;
 }
 
+/**
+ * 
+ * @param {String} text
+ * @returns {Array} Array of words 
+ */
 function textToWords(text){
     const regex = /([\wÀ-ÿ]+-?[\wÀ-ÿ]*)/g;
 

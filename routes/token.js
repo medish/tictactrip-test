@@ -1,9 +1,10 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
+const config = require('config');
 
-const EXPIRY_TIME = '1m';
-const SECRET_KEY = 'secret_key';
+const EXPIRY_TIME = config.get('TOKEN_EXPIRY_TIME');
+const SECRET_KEY = config.get('SECRET_KEY');
 
 const router = express.Router();
 
