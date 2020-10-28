@@ -1,7 +1,12 @@
 /**
- * @summary 
+ * @module textFactory
+ * Build a justified text from any given text
+ */
+
+/**
+ * Text justification function
  * @param {Array} words Array of words
- * @param {Number} maxWidth Maximum width of a line.
+ * @param {Number} maxWidth Maximum width of each line.
  * @returns {Array} Justified lines
  */
 function justifyText(words, maxWidth) {
@@ -69,7 +74,7 @@ function justifyLine(words, numOfSpaces, isLastLine){
 /**
  * 
  * @param {String} paragraph
- * @summary split given 'paragraph' into words.
+ * @summary split a given 'paragraph' into words.
  * @returns {Array} Array of words 
  */
 function paragraphToWords(paragraph){
@@ -79,7 +84,7 @@ function paragraphToWords(paragraph){
 
 /**
  * 
- * Split given 'text' into paragraphs and take in consideration 
+ * Split a given 'text' into paragraphs and take in consideration 
  * the ponctuation and paragraphs (and break lines).
  * @param {String} text
  * @returns {Array} Array of paragraphs.
@@ -90,9 +95,8 @@ function textToParagraphs(text){
 }
 
 /**
- * 
+ * Justify a given 'text' with maximum width of line
  * @param {String} text
- * @summary  
  * @param {Number} maxWidth
  * @returns  {Array} Array of justified paragraphs.
  */
@@ -111,7 +115,7 @@ function textToJustifiedText(text, maxWidth) {
 }
 
 /**
- * 
+ * Split a given 'text' into words
  * @param {String} text
  * @returns {Array} Array of words 
  */
@@ -122,7 +126,7 @@ function textToWords(text){
 }
 
 /**
- * 
+ * Build a string from a given array of words
  * @param {Array} jParagraphs
  * @returns {String} Justified text 
  */
