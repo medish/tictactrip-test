@@ -1,7 +1,7 @@
 # Tictactrip test
 A RESTful api using Node.js, to justify a given text
 ## Installation
-First you need to install npm dependencies in the project folder usind `npm install` command.
+First you need to install npm dependencies in the project folder using `npm install` command.
 ## Available commands
 ```
 npm test # test using Jest.
@@ -49,9 +49,10 @@ RATE_WORDS_LIMIT # number of words allowed.
 RATE_EXPIRY_TIME # expiry time of rate limit (per token)
 ```
 ## Deploy
-The app is deployed to [Heroku](https://heroku.com/).
-To test the app, you either run it locally using `npm run start` command or open the app at the [URL](https://tictactrip-test-medish.herokuapp.com/) `https://tictactrip-test-medish.herokuapp.com/` 
-
+The app is deployed to [Heroku](https://heroku.com/). 
+## Test
+To test the app, you either run it locally using `npm run start` command or open the app at the [URL](https://tictactrip-test-medish.herokuapp.com/) `https://tictactrip-test-medish.herokuapp.com/`
+To test the routes, you can use any REST api client.
 
 ### Note
 This server keeps a JSON object in memory to store the tokens' rate limit. If the server is restarted the object returns empty.
