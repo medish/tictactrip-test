@@ -5,8 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node $main",
-    "devStart": "nodemon $main",
-    "test": "jest --coverage"
+    "dev": "nodemon $main",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "docs" : "jsdoc -d docs -r ." 
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "jest": "^26.6.1",
+    "jsdoc": "^3.6.6",
     "nodemon": "^2.0.6",
     "supertest": "^5.0.0"
   }

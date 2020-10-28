@@ -47,6 +47,7 @@ describe('/api/justify', () => {
         })
         
         it('should return 402 if the user exceeded the limit of words', async () => {
+            // tested with rate_limit_words = 40
             const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoibWVkaXNoQHRpY3RhY3RyaXAuY29tIiwiaWF0IjoxNjAzODQyNDk3fQ.GZ26PdWohhkb5uf-F2jlWIuvIqHvrW51z6FSItWNVLo';
             const response = await request(server)
                 .post('/api/justify')
