@@ -11,10 +11,10 @@ router.use(bodyParser.json());
 
 router.post('/api/token', (request, response) => {
     const user = request.body;
-    if(!user) return response.status(400).send('No user found');
+    if(!user.mail) return response.status(400).send('No user found');
     
     const token = jwt.sign(user, SECRET_KEY);
-    response.json({token , mail : user.mail});
+    response.status(200).json({token , mail : user.mail});
 })
 
 

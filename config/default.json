@@ -2,6 +2,6 @@
     "PORT" : "5050",
     "SECRET_KEY" : "tictactrip_key",
     "JUSTIFY_LINE_WIDTH" : "80",
-    "RATE_WORDS_LIMIT" : "400",
-    "RATE_EXPIRY_TIME" : "30s"
+    "RATE_WORDS_LIMIT" : "80000",
+    "RATE_EXPIRY_TIME" : "24h"
 }

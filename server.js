@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 const justifyRouter = require('./routes/justify');
@@ -10,6 +9,8 @@ const PORT = process.env.PORT || config.get('PORT');
 app.use(justifyRouter);
 app.use(tokenRouter);
 
-app.listen(PORT, (error) => {
+const server = app.listen(PORT, (error) => {
     if(!error) console.log(`Listening on port ${PORT}...`);
-})
+});
+
+module.exports = server;
